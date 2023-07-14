@@ -61,7 +61,7 @@ const updateFile = async (req, res, next) => {
 const deleteFile = async (req, res, next) => {
     const { id } = req.params
     const file = await File.findByPk(id)
-    await fs.unlink(file.path)
+    // await fs.unlink(file.path)
     await File.destroy({where: { id: id}})
     res.status(200).send("file has been successfully deleted")
 }

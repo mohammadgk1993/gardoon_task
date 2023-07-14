@@ -13,9 +13,9 @@ router.post("/", createFileValidator, upload.single('file'), uploadFile);
 
 router.get("/:id", fileExistanceValidator, downloadFileValidator, downloadFile)
 
-router.patch("/:id", fileExistanceValidator, createFileValidator, upload.single('file'), updateFile)
+router.patch("/:id", isAdmin, fileExistanceValidator, createFileValidator, upload.single('file'), updateFile)
 
-router.delete("/:id", fileExistanceValidator, isAdmin, deleteFile)
+router.delete("/:id", isAdmin, fileExistanceValidator, deleteFile)
 
 
 module.exports = router;
