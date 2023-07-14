@@ -3,6 +3,7 @@ const { AppError } = require("../utils/types")
 const fs = require("node:fs/promises")
 const path = require("path")
 
+
 const getAllFiles = async (req, res, next) => {
     const files = await File.findAll()
     res.status(200).json(files)
