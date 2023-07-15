@@ -5,23 +5,25 @@ const createFileValidator = async (req,res,next) => {
     const { ip_list, limit } = req.body
 
     if (!!ip_list) {
-        if (({}).toString.call(JSON.parse(ip_list)) !== '[object Array]') {
-            return next(new AppError("ip_list must be and Array", 400))
-        }
+        const modifiedIpList = ip_list.replace(/'/g, '"')
 
-        if (JSON.parse(ip_list).length == 0) {
-            return next(new AppError("ip_list must have at least one IP", 400)) 
-        }
+        if (isNotParsable(modifiedIpList)) {
+            return next(new AppError(`ip_list must be an array of IP's`, 400)) 
+        } else {
+            for (let ip of JSON.parse(modifiedIpList)) {
+                if (!/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip)) {
+                    return next(new AppError(`one of entered IP's are not valid`, 400))
+                }
+            }
 
-        for (let ip of ip_list) {
-            if (!/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(ip_list)) {
-                return next(new AppError(`one of entered IP's are not valid`, 400))
+            if (JSON.parse(modifiedIpList).length == 0) {
+                return next(new AppError("ip_list must have at least one IP", 400)) 
             }
         }
     }
 
     if (!!limit) {
-        if (typeof limit !== "number" || limit < 0 || !Number.isInteger(limit)) {
+        if (typeof Number(limit) !== "number" || limit < 0 || !Number.isInteger(Number(limit))) {
             return next(new AppError("invalid entry for limit", 400))
         }
     }
@@ -33,7 +35,7 @@ const downloadFileValidator = async (req, res, next) => {
     const { id } = req.params
     const file = await File.findByPk(id)
 
-    if (!!file.limit && file.limit == file.limit_count) {
+    if (!!file.limit && file.limit === file.limit_count) {
         return next(new AppError("file limit is reached out", 404))
     }
 
@@ -60,6 +62,15 @@ const fileExistanceValidator = async (req, res, next) => {
     }
 
     return next()
+}
+
+function isNotParsable(str) {
+    try {
+      JSON.parse(str);
+      return false; // String is parsable
+    } catch (error) {
+      return true; // String is not parsable
+    }
 }
 
 module.exports = { createFileValidator, downloadFileValidator, fileExistanceValidator }

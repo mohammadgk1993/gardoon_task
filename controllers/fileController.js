@@ -12,10 +12,8 @@ const getAllFiles = async (req, res, next) => {
 const uploadFile = async (req,res,next) => {
     const { filename, path, size } = req.file
     const { ip_list, limit } = req.body
-    
     const newFile = await File.create({filename, path, size, ip_list, limit, limit_count: 0 })
-    
-    res.status(201).json(newFile)
+    return res.status(201).json(newFile)
 }
 
 const downloadFile = async (req, res, next) => {
@@ -52,16 +50,17 @@ const updateFile = async (req, res, next) => {
     if (!!limit && limit < file.limit_count) {
         return next(new AppError("limit can not be less than limit_count"))
     }
-    if (!!limit && limit > file.limit_count) updatedFile.limit = limit
+    
+    updatedFile.limit = limit
 
-    await File.update({},{where: { id: id}})
-    res.status(200).send("file has been successfully deleted")
+    await File.update(updatedFile,{where: { id: id}})
+    res.status(200).send("file has been successfully updated")
 }
 
 const deleteFile = async (req, res, next) => {
     const { id } = req.params
     const file = await File.findByPk(id)
-    // await fs.unlink(file.path)
+    await fs.unlink(file.path)
     await File.destroy({where: { id: id}})
     res.status(200).send("file has been successfully deleted")
 }

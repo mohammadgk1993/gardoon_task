@@ -7,15 +7,14 @@ const { createFileValidator, downloadFileValidator, fileExistanceValidator } = r
 const { uploadFile, downloadFile, deleteFile, getAllFiles, updateFile } = require("../controllers/fileController");
 
 
-router.get("/", getAllFiles)
+router.get("/", requestHandler(getAllFiles))
 
-router.post("/", createFileValidator, upload.single('file'), uploadFile);
+router.post("/", upload.single('file'), createFileValidator, requestHandler(uploadFile));
 
-router.get("/:id", fileExistanceValidator, downloadFileValidator, downloadFile)
+router.get("/:id", fileExistanceValidator, downloadFileValidator, requestHandler(downloadFile))
 
-router.patch("/:id", isAdmin, fileExistanceValidator, createFileValidator, upload.single('file'), updateFile)
+router.patch("/:id", isAdmin, fileExistanceValidator, upload.single('file'), createFileValidator, requestHandler(updateFile))
 
-router.delete("/:id", isAdmin, fileExistanceValidator, deleteFile)
-
+router.delete("/:id", isAdmin, fileExistanceValidator, requestHandler(deleteFile))
 
 module.exports = router;

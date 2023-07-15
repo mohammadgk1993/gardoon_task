@@ -2,14 +2,16 @@ const express = require("express");
 const session = require("express-session")
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const bodyParser = require('body-parser');
 const logger = require("morgan");
 const { errorHandler } = require("./services/error.handler");
 require("dotenv").config();
 require("./database/load");
-
-
 const apiRouter = require("./routes/index");
 const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
     secret: process.env.secret,
