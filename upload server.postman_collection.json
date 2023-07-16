@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "2b318902-287f-4092-bb1b-238b3005abf0",
+		"name": "upload server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28545549"
+	},
+	"item": [
+		{
+			"name": "file api",
+			"item": [
+				{
+					"name": "get all files list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/file"
+					},
+					"response": [
+						{
+							"name": "get all uploaded files list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:3000/file"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1825"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"721-i61dWtxn1ix+su3AApHp8FMW4fY\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Avik1umySWiY1gsD_dXdkxgm8wntujqRT.L1HXQeFAg6sXKPo6r6N0qDByoO%2FqNo0CkYkSG3p6ZXI; Path=/; Expires=Wed, 19 Jul 2023 06:55:55 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 18:55:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"filename\": \"1689380649910-Screenshot from 2023-06-12 00-03-50.png\",\n        \"path\": \"public/uploads/1689380649910-Screenshot from 2023-06-12 00-03-50.png\",\n        \"size\": \"245577\",\n        \"ip_list\": \"['192.168.1.5','192.168.1.10']\",\n        \"limit\": \"5\",\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-15T00:24:09.000Z\",\n        \"updatedAt\": \"2023-07-15T00:24:09.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"filename\": \"1689531595007-Screenshot from 2023-06-12 00-01-35.png\",\n        \"path\": \"public/uploads/1689531595007-Screenshot from 2023-06-12 00-01-35.png\",\n        \"size\": \"294582\",\n        \"ip_list\": null,\n        \"limit\": null,\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-16T18:19:55.000Z\",\n        \"updatedAt\": \"2023-07-16T18:19:55.000Z\"\n    },\n    {\n        \"id\": 3,\n        \"filename\": \"1689531875525-Screenshot from 2023-06-12 00-01-35.png\",\n        \"path\": \"public/uploads/1689531875525-Screenshot from 2023-06-12 00-01-35.png\",\n        \"size\": \"294582\",\n        \"ip_list\": null,\n        \"limit\": null,\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-16T18:24:35.000Z\",\n        \"updatedAt\": \"2023-07-16T18:24:35.000Z\"\n    },\n    {\n        \"id\": 4,\n        \"filename\": \"1689531901225-Screenshot from 2023-06-12 00-01-35.png\",\n        \"path\": \"public/uploads/1689531901225-Screenshot from 2023-06-12 00-01-35.png\",\n        \"size\": \"294582\",\n        \"ip_list\": null,\n        \"limit\": null,\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-16T18:25:01.000Z\",\n        \"updatedAt\": \"2023-07-16T18:25:01.000Z\"\n    },\n    {\n        \"id\": 5,\n        \"filename\": \"1689531904663-Screenshot from 2023-06-12 00-01-35.png\",\n        \"path\": \"public/uploads/1689531904663-Screenshot from 2023-06-12 00-01-35.png\",\n        \"size\": \"294582\",\n        \"ip_list\": null,\n        \"limit\": \"5\",\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-16T18:25:04.000Z\",\n        \"updatedAt\": \"2023-07-16T18:41:54.000Z\"\n    },\n    {\n        \"id\": 6,\n        \"filename\": \"1689532538938-hszqZgM-nightmare-before-christmas-desktop-wallpaper.jpg\",\n        \"path\": \"public/uploads/1689532538938-hszqZgM-nightmare-before-christmas-desktop-wallpaper.jpg\",\n        \"size\": \"389142\",\n        \"ip_list\": null,\n        \"limit\": null,\n        \"limit_count\": \"0\",\n        \"createdAt\": \"2023-07-16T18:35:38.000Z\",\n        \"updatedAt\": \"2023-07-16T18:35:38.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "localhost:3000/file"
+					},
+					"response": [
+						{
+							"name": "upload file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/home/nemesis/Pictures/Screenshots/Screenshot from 2023-05-16 16-52-21.png"
+										}
+									]
+								},
+								"url": "localhost:3000/file"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "delete file",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/file/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"file",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete file with pk id: \"6\"",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "localhost:3000/file/6"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-AYqyqQpwB/E00F0mAZR3kP0Ergw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 19:16:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "file has been successfully deleted"
+						}
+					]
+				},
+				{
+					"name": "update file",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/file/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"file",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update file",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\":\"4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:3000/file/5"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-wzeOmeR1udGWIjfWpajqGxBKtDg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 19:26:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "file has been successfully updated"
+						}
+					]
+				},
+				{
+					"name": "download file",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/file/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"file",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "download file with pk id : \"1\"",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:3000/file/1"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user api",
+			"item": [
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"username\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/user"
+					},
+					"response": [
+						{
+							"name": "login user with admin user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"adminPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:3000/user"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-EY8XVmTFS7Ha7XVMmgm31mwGQOM\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AxcpHZVXW1773h1WcfFzE1JhNWgvMCmop.d87NlLyIdRUA1nc9flR1d1tikog4NOFG%2Fb3HiA3G7mI; Path=/; Expires=Wed, 19 Jul 2023 07:10:37 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Jul 2023 19:10:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"successfully signed in\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

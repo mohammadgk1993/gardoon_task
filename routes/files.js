@@ -9,11 +9,11 @@ const { uploadFile, downloadFile, deleteFile, getAllFiles, updateFile } = requir
 
 router.get("/", requestHandler(getAllFiles))
 
-router.post("/", upload.single('file'), createFileValidator, requestHandler(uploadFile));
+router.post("/", createFileValidator, upload.single('file'), requestHandler(uploadFile));
 
 router.get("/:id", fileExistanceValidator, downloadFileValidator, requestHandler(downloadFile))
 
-router.patch("/:id", isAdmin, fileExistanceValidator, upload.single('file'), createFileValidator, requestHandler(updateFile))
+router.patch("/:id", isAdmin, fileExistanceValidator, createFileValidator, upload.single('file'), requestHandler(updateFile))
 
 router.delete("/:id", isAdmin, fileExistanceValidator, requestHandler(deleteFile))
 

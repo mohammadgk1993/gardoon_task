@@ -65,4 +65,4 @@ const deleteFile = async (req, res, next) => {
     res.status(200).send("file has been successfully deleted")
 }
 
-module.exports = { getAllFiles ,uploadFile, downloadFile, updateFile, deleteFile }
+module.exports = { getAllFiles , uploadFile, downloadFile, updateFile, deleteFile }
